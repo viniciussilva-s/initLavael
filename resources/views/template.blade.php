@@ -4,6 +4,9 @@
         <title>Filme(s) | @yield("title")</title>
       
         @include("components/style")
+        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+        <!-- @include('sweetalert::alert') -->
+
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <style>

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 use Auth;
+use Alert;
 
 class loginController extends Controller
 {
@@ -14,6 +17,7 @@ class loginController extends Controller
             if (Auth::attempt(["email" =>$dados["email"]  , "password" => $dados["password"]])) {
                 return redirect()->route("movie.list");
             }
+            toast('Usuário e/ou senha inválido(s)', 'error');
         }
         return view("login");
     }

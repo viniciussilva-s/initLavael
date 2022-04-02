@@ -36,7 +36,13 @@
         </center>
     </div>
     <div class="z-depth-1" style="width:50%; padding: 32px 48px 10px 48px;  margin:0 auto;">
-        <form  method="post">
+    <div class="flash-message">
+  @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(Session::has('alert-' . $msg))
+    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+    @endif
+  @endforeach
+</div>  <form  method="post">
             @csrf
             <div class='row'>
                 <div class='input-field col s12 '>
@@ -59,6 +65,8 @@
     </div>
   </main>
   @include("components/javascript")
+  @include('sweetalert::alert')
+
 </body>
 
 </html>
